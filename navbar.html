@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Gregor Dederichs">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Gregor Dederichs</title>
+    <link rel="icon" type="image/x-icon" href="media/GD.svg">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="style/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap-5.3.3-dist/css/style.css" rel="stylesheet">
+    <link href="style/bootstrap-5.3.3-dist/css/features.css" rel="stylesheet">
+
+    <style>
+      .parallax {
+        min-height: 200px; 
+        background-attachment: fixed; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; 
+      }
+      #home {
+        background-image: url('media/DSC02218.JPG'); 
+      }
+    </style>
+
+    <style>
+        .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+        .dropend:hover > .dropdown-menu {
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+    </style>
+
+    <style>
+      [id] {
+          scroll-margin-top: 100px;
+      }
+    </style>
+
+    <style>
+      .navbar-custom {
+        backdrop-filter: blur(75px);
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    </style>
+
+    <style>
+      .custom-blur-background {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.0);
+      }
+    </style>
+
+    <style> 
+        html {
+            overflow-y: scroll;
+        }
+    </style>
+
+    <style>
+      .frosted-glass {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .bg-frosted {
+        background-color: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 10px solid rgba(255, 255, 255, 0.9);
+        transform: none !important;
+      }
+    </style>
+
+  </head>
+  
+
+
+
+<!-- navigation bar -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top navbar-custom">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+
+    <!-- Logo -->
+    <div class="px-3 position-absolute start-50 translate-middle-x">
+      <a href="index.html#">
+        <img src="media/namelogo.svg" alt="Logo" class="d-inline-block align-text-top" style="height: 60px;">
+      </a>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="btn m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+      <img src="media/sidebar-4.svg" alt="sidebar" class="img-fluid" style="width: 36px;">
+    </button>
+
+    <!-- Contact Button -->
+    <div class="dropdown-center position-absolute end-0 me-3">
+      <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Contact
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end bg-frosted w-auto" style="min-width: 0;">
+        <li><a style="color:rgba(0, 0, 0, 0.7);" class="dropdown-item text-center" href="mailto:gregor.dederichs@alumni.epfl.ch" target="_blank">Email</a></li>
+        <li><a style="color:rgba(0, 0, 0, 0.7);" class="dropdown-item text-center" href="https://www.linkedin.com/in/gregordederichs/" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<!-- end of common navbar -->
+ 
+
+<!-- Sidebar -->
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header">
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+    <div class="text-center mb-4">
+      <a href="index.html">
+        <img src="media/namelogo.svg" alt="Header Logo" width="60%" class="img-fluid">
+      </a>
+    </div>
+    <ul class="nav flex-column">
+        <a class="btn btn-outline-light mt-3" href="index.html#Education" target="_self" >Education</a>
+        <a class="btn btn-outline-light mt-3" href="projects.html" target="_self">Project Portfolio</a>
+        <a class="btn btn-outline-light mt-3" href="index.html#Experience" target="_self">Experience</a>
+        <a class="btn btn-outline-light mt-3" href="index.html#Awards" target="_self">Awards</a>
+        <a class="btn btn-outline-light mt-3" href="index.html#ArtsAndSports" target="_self">Sports and Arts</a>
+
+        <a><hr class="divider"></a>
+
+        <div class="btn-group w-100">
+          <button type="button" class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </button>
+          <ul class="dropdown-menu w-100">
+            <li><a class="dropdown-item text-center" href="mailto:gregor.dederichs@alumni.epfl.ch" target="_blank">Email</a></li>
+            <li><a class="dropdown-item text-center" href="https://www.linkedin.com/in/gregordederichs/" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+        <a class="btn btn-outline-primary mt-3" href="news.html" target="_self" >Latest News</a>
+
+        
+      </ul>
+    </div>
+</div>  

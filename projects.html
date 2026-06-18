@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Gregor Dederichs">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Gregor Dederichs</title>
+    <link rel="icon" type="image/x-icon" href="media/GD.svg">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/starter-template/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link href="style/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap-5.3.3-dist/css/style.css" rel="stylesheet">
+    <link href="style/bootstrap-5.3.3-dist/css/features.css" rel="stylesheet">
+
+    <style>
+      .parallax {
+        min-height: 500px; 
+        background-attachment: fixed; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; 
+      }
+      #home {
+        background-image: url('media/DSC02218.JPG'); 
+      }
+    </style>
+
+    <style>
+        .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+        .dropend:hover > .dropdown-menu {
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+    </style>
+
+    <style>
+      [id] {
+          scroll-margin-top: 100px;
+      }
+    </style>
+
+    <style>
+      .custom-blur-background {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.0);
+      }
+    </style>
+
+  </head>
+
+  <body class="parallax" 
+        style="background-image: url(media/DSC04473.JPG);background-size: cover; background-position: center -95px;">
+
+    <div id="navbar-placeholder"></div>
+
+    <!-- title card -->
+    <section>
+      <div class="position-relative overflow-hidden text-center parallax vh-100 d-flex align-items-center justify-content-center">
+        <div class="col-md-6 p-lg-5">
+            <h1 class="display-3 fw-bold" style="text-shadow: 0px 0px 100px black;">Project Portfolio</h1>
+        </div>
+      </div>
+    </section>
+
+    <div class="custom-blur-background">
+      <div class="container px-4 py-5">
+        <div class="row gx-2">
+
+
+
+          <div class="col-md-8">
+            <div class="card mb-5">
+              <img src="media/neural_dyn2.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Network Dynamics in<br>Human Cortical Organoids</h2>
+                <p class="mb-4 text-left">
+                  MSc thesis investigating how functional network dynamics develop in human cortical organoids,
+                  lab-grown brain tissue that reliably reproduces key aspects of the cerebral cortex.
+                  As an engineer in a team of biologists, I took full scientific ownership of the data flow, building a reproducible
+                  analysis workflow from the ground up in a completely novel experimental system. Additionally co-led a collaboration with a
+                  machine learning for medicine laboratory.
+                  <br><br>
+                  The emergence and maturation of circuit activity across developmental stages was
+                  characterised using 3D multi-electrode arrays, identifying low-dimensional signatures of
+                  neuropsychiatric disorders based on single-unit activity.
+                  The project spanned machine learning, recurrent activity pattern detection, dynamical systems theory, and
+                  computational modelling of neural dynamics. 
+                  Nominated for the best Master's Thesis in Life Sciences Engineering at EPFL in 2026.
+                </p>
+
+                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Awaiting publication...">
+                  <button class="btn btn-primary" type="button" disabled>More</button>
+                </span>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/nibs_example.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">NIBS Software</h2>
+                <p class="mb-4 text-left">
+                  Non-invasive brain stimulation software with a graphical user interface,
+                  supporting multiple stimulation protocols
+                  and compatible with National Instruments DAQ systems.
+                  It operates in two modes: (i) a development mode allowing modulation of stimulation parameters, real-time parameter updates and modelling of the interefence pattern; 
+                  and (ii) a blind mode supporting double-blind, sham-controlled stimulation, loading pre-defined parameters per participant.
+                </p>
+                <a href="https://github.com/gdederichs/HummelGUI" target="_blank" class="btn btn-primary">More</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/mri_example.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">MRI Processing</h2>
+                <p class="mb-4 text-left">
+                  Analysis and processing of fMRI data during music-listening tasks, including preprocessing, GLM analysis and decoding of music features from brain activity.
+                  <br><br>
+                  A seperate interactive tool was developed for education purposes, allowing users to explore the relationship between k-space sampling and resulting image quality.
+                </p>
+                <div class="btn-group" role="group" aria-label="mri_btns">
+                  <a href="https://github.com/gdederichs/NSSP_project_1" target="_blank" class="btn btn-primary">More</a>
+                  <a href="https://github.com/gdederichs/KSpaceGUI" target="_blank" class="btn btn-outline-primary">Interactive tool</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/emg_example.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">EMG Dynamics</h2>
+                <p class="mb-4 text-left">
+                  Analysis and processing of EMG signals for the prediction of hand movements.
+                  <br><br>
+                  Hand movements predicted ranged from gross movementes (e.g. hand opening vs closing)
+                  to individual joint angle predictions; multiple models were developed, evaluated and compared.
+                </p>
+                <a href="https://github.com/gdederichs/NSSP_project_2" class="btn btn-primary">More</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/biochem_example.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Biochemical Data Analysis</h2>
+                <p class="mb-4 text-left">
+                  Detailed biochemical data analysis of ligand-protein interactions. Top 10 project in the 600+ student CS-401 course at EPFL.
+                  <br><br>
+                  A detailed, interactive website was developed to present the results of the analysis, 
+                  exploring targeted diseases, protein classes, drug properties as well as exploring the main research institutions and companies in the field over time; with case studies in cancer and neurodegeneration.
+
+                </p>
+                <div class="btn-group" role="group" aria-label="mri_btns">
+                  <a href="https://epfl-ada.github.io/ada-2024-project-standarddeviants/" target="_blank" class="btn btn-primary">More</a>
+                  <a href="https://epfl-ada.github.io/teaching/fall2025/cs401/" target="_blank" class="btn btn-outline-primary">CS-401</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/lac_operon.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Genetic Network Modeling</h2>
+                <p class="mb-4 text-left">
+                  Modeling of the dynamical systems created by genetic networks, with a focus on the bacterial lac operon. 
+                  <br><br>
+                  The model is grounded in dynamical systems theory and machine learning, and explores the system's behaviour.
+                  This includes stability, steady states, reaction to perturbations, bifurcation diagrams, and parameter estimation from noise-corrupted data.
+                </p>
+                <a href="https://github.com/gdederichs/biosys" target="_blank" class="btn btn-primary">More</a>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-8">
+            <div class="card mb-5">
+              <img src="media/zebrafish.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Healthy and Seizure-prone<br>Astroglial Network Dynamics</h2>
+                <p class="mb-4 text-left">
+                  BSc thesis investigating how astroglial network dynamics control neural excitability in epilepsy zebrafish models.
+                  Developed and maintained two seperate analysis pipelines for (i) investigating connectivity across entire astroglial networks,
+                  and (ii) understanding calcium event propagation across single cells.
+                  <br><br>
+                  Network dynamics were recorded by 2-photon microscopy during exposition to seizure-inducing stimuli.
+                  The project spanned signal processing, cell segmentation and machine learning, both on whole-brain and single-cell activity.
+                </p>
+
+                <a href="https://yaksilab.com/" target="_blank" class="btn btn-primary">More</a>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/epigen_example.jpg" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Epigenetics of Memory</h2>
+                <p class="mb-4 text-left">
+                  Memories are not static, they can be silenced. Supported research on how epigenetic editing of engram cells can be used to extinguish fear memories in rodent models, with ultimate applications in PTSD and anxiety disorders.
+                  <br><br>
+                  Designed and tested gene constructs for memory extinction in rodent models (cell culture, viral transfections, qRT-PCR, ...).
+                </p>
+                <a href="https://www.epfl.ch/labs/graefflab/" target="_blank" class="btn btn-primary">More</a>
+              </div>
+            </div>
+          </div>    
+          
+          
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              <img src="media/zebra.png" class="card-img-top" alt="image">
+              <div class="card-body">
+                <h2 class="display-6 fw-bold text-muted text-center">Hopfield Network Model</h2>
+                <p class="mb-4 text-left">
+                  Implementation of various Hopfield Network models for the reconstruction of degraded data and images.
+                  <br><br>
+                  Spanning computational neuroscience, machine learnine, dynamical systems theory. Top 10 project in the 150+ BIO-210 (Applied software engineering for life sciences) course at EPFL.
+                </p>
+
+                <div class="btn-group" role="group" aria-label="mri_btns">
+                  <a href="https://github.com/EPFL-BIO-210/BIO-210-team-2" target="_blank" class="btn btn-primary">More</a>
+                  <a href="https://edu.epfl.ch/coursebook/en/applied-software-engineering-for-life-sciences-BIO-210" target="_blank" class="btn btn-outline-primary">BIO-210</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-4">
+            <div class="card mb-5">
+              
+              <img src="media/placeholder_trees.png" class="card-img-top" alt="image">
+
+              <div class="card-body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Future projects are loading...">
+                <h2 class="display-6 fw-bold text-muted text-center">
+                  <span class="placeholder col-10"></span>
+                </h2>
+                <p class="mb-4">
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-2"></span>
+                  <span class="placeholder col-3"></span>
+                  <span class="placeholder col-2"></span>
+                  <span class="placeholder col-4"></span>
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-9"></span>
+                  <span class="placeholder col-2"></span>
+                  <br><br>
+                  <span class="placeholder col-6"></span>
+                  <span class="placeholder col-4"></span>
+                  <span class="placeholder col-2"></span>
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-9"></span>
+                  <br><br>
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-9"></span>
+                </p>
+                <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div id="footer-placeholder"></div>
+
+      </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+    <script>
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
+
+      const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+      const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+
+  </body>
+</html>

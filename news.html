@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Latest neurotech news">
+    <meta name="author" content="Gregor Dederichs">
+    <title>Gregor Dederichs</title>
+    <link rel="icon" type="image/x-icon" href="media/GD.svg">
+
+    <link href="style/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap-5.3.3-dist/css/style.css" rel="stylesheet">
+
+    <style>
+      .custom-blur-background {
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      .no-caret::after { display: none; }
+      [id] { scroll-margin-top: 100px; }
+      html { overflow-y: scroll; }
+
+      /* News cards */
+      .news-card {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0.75rem;
+        transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        height: 100%;
+      }
+      .news-card:hover {
+        background-color: rgb(0, 0, 0);
+        border-color: rgba(255,255,255, 0.5);
+      }
+      .news-card a.stretched-link {
+        text-decoration: none;
+        color: inherit;
+      }
+      .news-source-badge {
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+      .news-date {
+        font-size: 0.75rem;
+        opacity: 0.5;
+      }
+      .news-title {
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .news-excerpt {
+        font-size: 0.82rem;
+        opacity: 0.65;
+        line-height: 1.5;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Pinned Highlight Card Styling */
+      .pinned-card {
+        background-color: rgba(0, 242, 254, 0.05) !important;
+        border: 1px solid rgba(0, 242, 254, 0.35) !important;
+        box-shadow: 0 0 5px rgba(0, 242, 254, 0.15);
+      }
+      .pinned-card:hover {
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        border-color: rgba(0, 242, 254, 0.6) !important;
+        box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+      }
+
+      /* Pinned Red Card Styling (Deep Tech Nation) */
+      .pinned-card-swiss {
+        background-color: rgba(255, 0, 0, 0.05) !important;
+        border: 1px solid rgba(255, 0, 0, 0.65) !important;
+        box-shadow: 0 0 5px rgba(255, 46, 99, 0.15);
+      }
+      .pinned-card-swiss:hover {
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        border-color: rgba(218, 41, 28, 1) !important;
+        box-shadow: 0 0 20px rgba(255, 46, 99, 0.3);
+      }
+
+      /* Skeleton loader */
+      .skeleton {
+        background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+        border-radius: 0.4rem;
+      }
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+
+      .page-header {
+        padding-top: 120px;
+        padding-bottom: 2rem;
+      }
+    </style>
+  </head>
+
+  <body class="parallax" style="background-image: url(media/news_bg.jpg);background-size: cover; background-position: center -95px;">
+
+  <!-- navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- main -->
+  <div class="position-relative overflow-hidden text-center bg-transparent parallax vh-100 d-flex flex-column align-items-center justify-content-center">
+    
+    <div class="col-md-6 p-lg-5">
+        <h1 class="display-3 fw-bold" style="text-shadow: 0px 0px 100px black;">The Latest</h1>
+        <h3 class="fw-normal text-muted mb-0">Updates in Biomedical Engineering<br>and Neurotechnology</h3>
+    </div>
+
+    
+    <button 
+      class="btn btn-sm btn-outline-light position-absolute bottom-0 start-50 translate-middle-x mb-5" 
+      id="refreshBtn" 
+      onclick="loadAllFeeds(); document.getElementById('newsGrid').scrollIntoView({ behavior: 'smooth' });">
+      ↺ Refresh
+    </button>
+
+  </div>
+
+
+
+  <div class="container-fluid px-3 py-3 d-flex flex-column parallax custom-blur-background">
+    <p id="statusMsg" class="text-secondary" style="font-size:0.8rem;"></p>
+    <div class="row g-3" id="newsGrid">
+      </div>
+
+    <!-- disclaimer -->
+    <div class="mt-4 mb-2 text-center">
+      <p class="text-secondary" style="font-size:0.75rem;">
+        The articles are aggregated from various sources and are for informational purposes only. 
+      </p>
+
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
+
+  </div>
+
+
+
+  <script src="style/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+    const FEEDS = [
+      { url: 'https://neurosciencenews.com/neuroscience-topics/neurotech/feed/', source: 'Neuroscience News' },
+      { url: 'https://www.fiercebiotech.com/rss/xml', source: 'Fierce Biotech' }, 
+      { url: 'https://spectrum.ieee.org/feeds/topic/biomedical.rss', source: 'IEEE Spectrum' }, 
+      { url: 'https://neurotechnology.substack.com/feed', source: 'Neurotech Futures' }, 
+      { url: 'https://mcgovern.mit.edu/news/feed', source: 'McGovern MIT' }, 
+      { url: 'https://www.thetransmitter.org/feed',source: 'The Transmitter' }, 
+    ];
+
+    let allItems = [];
+
+    function showSkeletons() {
+      const grid = document.getElementById('newsGrid');
+      grid.innerHTML = Array(9).fill(0).map(() => `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="news-card p-3">
+            <div class="skeleton mb-2" style="height:12px;width:40%"></div>
+            <div class="skeleton mb-2" style="height:16px;width:90%"></div>
+            <div class="skeleton mb-1" style="height:12px;width:100%"></div>
+            <div class="skeleton" style="height:12px;width:75%"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function stripHtml(html) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    async function fetchFeed(feed) {
+      try {
+        const res = await fetch(`${RSS2JSON}${encodeURIComponent(feed.url)}&count=10`);
+        const data = await res.json();
+        if (data.status !== 'ok') return [];
+        
+        let items = data.items || [];
+        
+        // time filtering
+        const now = new Date();
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const twoDaysAgo = new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000);
+        const twoWeeksAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
+        const threeWeeksAgo = new Date(now.getTime() - 21 * 24 * 60 * 60 * 1000);
+        const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        const fiveWeeksAgo = new Date(now.getTime() - 35 * 24 * 60 * 60 * 1000);
+
+        items = items.filter(item => {
+          if (!item.pubDate) return false;
+          const itemDate = new Date(item.pubDate);
+
+          switch (feed.source) {
+            case 'Fierce Biotech':
+            case 'The Transmitter':
+              return itemDate >= twoDaysAgo;
+            case 'Neuroscience News':
+              return itemDate >= twoWeeksAgo;
+            case 'IEEE Spectrum':
+              return itemDate >= threeWeeksAgo;
+            case 'McGovern MIT':
+              return itemDate >= fiveWeeksAgo;
+            case 'Neurotech Futures':
+              const isNotable = item.title && item.title.toLowerCase().includes('notable');
+              return itemDate >= thirtyDaysAgo && isNotable;
+
+            default:
+              return true;
+          }
+        });
+
+        return items.map(item => ({
+          title: item.title,
+          link: item.link,
+          date: item.pubDate,
+          excerpt: stripHtml(item.description || item.content || '').slice(0, 197) + '...',
+          source: feed.source,
+          author: item.author || item.creator || ''
+        }));
+      } catch {
+        return [];
+      }
+    }
+
+    function renderCards(items) {
+      const grid = document.getElementById('newsGrid');
+      if (!items.length) {
+        grid.innerHTML = `<div class="col-12 text-secondary" style="font-size:0.9rem;">No articles found.</div>`;
+        return;
+      }
+
+      // 1. Handle the dynamic Neurotech Futures pinned item (Blue Glow)
+      const pinnedIndex = items.findIndex(item => item.source === 'Neurotech Futures');
+      let pinnedBlueHtml = '';
+      let regularItems = [...items];
+
+      if (pinnedIndex !== -1) {
+        const pinnedItem = regularItems.splice(pinnedIndex, 1)[0];
+        pinnedBlueHtml = `
+          <div class="col-12 col-md-6 mb-2">
+            <div class="news-card pinned-card p-4 position-relative">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="news-source-badge text-info fw-bold">${pinnedItem.source} | Latest Notables ${pinnedItem.author ? 'by ' + pinnedItem.author : ''}</span>
+                <span class="news-date">${formatDate(pinnedItem.date)}</span>
+              </div>
+              <p class="news-title fs-5 mb-2 fw-semibold">${pinnedItem.title}</p>
+              <p class="news-excerpt mb-0 text-light-emphasis" style="-webkit-line-clamp: 4; line-clamp: 4;">Worldwide trends in neurotechnology from the past two weeks.</p>
+              <a href="${pinnedItem.link}" target="_blank" class="stretched-link" aria-label="${pinnedItem.title}"></a>
+            </div>
+          </div>
+        `;
+      }
+
+    // 2. Handle the static Deep Tech Nation pinned item (Red Glow)
+    const pinnedRedHtml = `
+      <div class="col-12 col-md-6 mb-2">
+        <div class="news-card pinned-card-swiss p-4 position-relative">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span style="color:red" class="news-source-badge fw-bold">Deep Tech Nation | Swiss Deep Tech News & Analysis</span>
+            <span class="news-date">${formatDate(new Date())}</span>
+          </div>
+          <p class="news-title fs-5 mb-2 fw-semibold">Explore Deep Tech Nation News</p>
+          <p class="news-excerpt mb-0 text-light-emphasis" style="-webkit-line-clamp: 4; line-clamp: 4;">
+            Swiss-specific deep tech ecosystem. Innovations, startup updates, deeptech trends.
+          </p>
+          <a href="https://deeptechnation.ch/news/" target="_blank" class="stretched-link" aria-label="Deep Tech Nation News"></a>
+        </div>
+      </div>
+    `;
+
+      // 3. Render all remaining standard items
+      const regularHtml = regularItems.map(item => `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="news-card p-3 position-relative">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="news-source-badge">${item.source}</span>
+              <span class="news-date">${formatDate(item.date)}</span>
+            </div>
+            <p class="news-title mb-2">${item.title}</p>
+            <p class="news-excerpt mb-0">${item.excerpt}</p>
+            <a href="${item.link}" target="_blank" class="stretched-link" aria-label="${item.title}"></a>
+          </div>
+        </div>
+      `).join('');
+
+      // Combine both pinned cards upfront, followed by standard grid feed
+      grid.innerHTML = pinnedBlueHtml + pinnedRedHtml + regularHtml;
+    }
+
+  async function loadAllFeeds() {
+    showSkeletons();
+    document.getElementById('statusMsg').textContent = 'Fetching latest articles…';
+    
+    try {
+      await new Promise(resolve => setTimeout(resolve, 747)); 
+      const results = await Promise.all(FEEDS.map(fetchFeed));
+      allItems = results.flat().sort((a, b) => new Date(b.date) - new Date(a.date));
+      document.getElementById('statusMsg').textContent =
+        allItems.length ? `${allItems.length} articles loaded` : 'Could not load feeds — try refreshing.';
+      renderCards(allItems);
+    } catch (error) {
+      console.error("Error loading feeds:", error);
+      document.getElementById('statusMsg').textContent = 'An error occurred while loading feeds.';
+    }
+  }
+
+    loadAllFeeds();
+  </script>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+
+  </body>
+</html>
