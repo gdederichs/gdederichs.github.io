@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Gregor Dederichs">
-  <meta name="generator" content="Hugo 0.122.0">
+  <meta name="google-site-verification" content="6z8KB1MvZqIa0fv6QJ9jkCjUva8xUfzhKzpF4g2LBu8" />
   <title>Gregor Dederichs</title>
   <link rel="icon" type="image/x-icon" href="media/GD.svg">
 
@@ -18,7 +18,7 @@
 
   <style>
     .parallax {
-      min-height: 200px; 
+      min-height: 100%; 
       background-attachment: fixed; 
       background-position: center;
       background-repeat: no-repeat;
@@ -26,6 +26,18 @@
     }
     #home {
       background-image: url('media/DSC02218.JPG'); 
+    }
+    html, body {
+      min-height: 100%;
+      background-image: url('media/DSC02218.JPG'); 
+      background-size: cover; 
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    @media (min-width: 768px) {
+      #Education, #Experience, #Awards, #ArtsAndSports {
+        height: 70vh !important;
+      }
     }
   </style>
 
@@ -54,8 +66,7 @@
   
 
 
-<body class="parallax" 
-      style="background-image: url(media/DSC02218.JPG);background-size: cover; background-position: center -95px;">
+<body class="parallax">
   
   <!-- navbar -->
   <div id="navbar-placeholder"></div>
@@ -117,7 +128,7 @@
 
     <!-- Card: Education -->
     <div class="card text-start text-light bg-body-secondary mb-5 mx-3 mx-md-5" id="Education"
-        style="height: 80vh; width: 100%;">
+        style="min-height: 80vh; width: 100%;">
       <div class="row g-0 h-100">
         <div class="col-md-5 d-flex align-items-center justify-content-center">
           <img src="media/EPFL-vue-aerienne.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Education Image">
@@ -146,7 +157,7 @@
 
     <!-- card: Experience -->
     <div class="card text-start text-light bg-body-secondary mb-5 mx-3 mx-md-5" id="Experience"
-        style="height: 80vh; width: 100%;">
+        style="min-height: 80vh; width: 100%;">
       <div class="row g-0 h-100">
         
         <div class="col-md-7 d-flex align-items-center">
@@ -175,7 +186,7 @@
 
     <!-- card: Awards -->
     <div class="card text-start text-light bg-body-secondary mb-5 mx-3 mx-md-5" id="Awards"
-        style="height: 80vh; width: 100%;">
+        style="min-height: 80vh; width: 100%;">
       <div class="row g-0 h-100">
         <div class="col-md-5 d-flex align-items-center justify-content-center">
           <img src="media/4O6A3092.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Awards Image">
@@ -220,7 +231,7 @@
     
     <!-- card: Arts and Sports -->
     <div class="card text-start text-light bg-body-secondary mb-5 mx-3 mx-md-5" id="ArtsAndSports"
-        style="height: 80vh; width: 100%;">
+        style="min-height: 80vh; width: 100%;">
       <div class="row g-0 h-100">
         
         <div class="col-md-7 d-flex align-items-center">
