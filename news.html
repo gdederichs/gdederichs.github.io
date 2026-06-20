@@ -12,6 +12,14 @@
     <link href="style/bootstrap-5.3.3-dist/css/style.css" rel="stylesheet">
 
     <style>
+      html, body {
+        min-height: 100%;
+        background-image: url('media/news_bg.webp');
+        background-size: cover;
+        background-position: center -95px;
+        background-repeat: no-repeat;
+      }
+
       .custom-blur-background {
         backdrop-filter: blur(10px);
         background-color: rgba(0, 0, 0, 0);
@@ -106,12 +114,10 @@
     </style>
   </head>
 
-  <body class="parallax" style="background-image: url(media/news_bg.jpg);background-size: cover; background-position: center -95px;">
+  <body class="parallax">
 
-  <!-- navbar -->
   <div id="navbar-placeholder"></div>
 
-  <!-- main -->
   <div class="position-relative overflow-hidden text-center bg-transparent parallax vh-100 d-flex flex-column align-items-center justify-content-center">
     
     <div class="col-md-6 p-lg-5">
@@ -136,13 +142,11 @@
     <div class="row g-3" id="newsGrid">
       </div>
 
-    <!-- disclaimer -->
     <div class="mt-4 mb-2 text-center">
       <p class="text-secondary" style="font-size:0.75rem;">
         The articles are aggregated from various sources and are for informational purposes only. 
       </p>
 
-    <!-- footer -->
     <div id="footer-placeholder"></div>
 
   </div>
