@@ -164,6 +164,11 @@
       { url: 'https://neurotechnology.substack.com/feed', source: 'Neurotech Futures' }, 
       { url: 'https://mcgovern.mit.edu/news/feed', source: 'McGovern MIT' }, 
       { url: 'https://www.thetransmitter.org/feed',source: 'The Transmitter' }, 
+      { url: 'https://www.nature.com/nm.rss', source: 'Nature Medicine' },
+      { url: 'https://www.nature.com/natbiomedeng.rss', source: 'Nature Biomedical Engineering' },
+      { url: 'https://www.nature.com/neuro.rss', source: 'Nature Neuroscience' },
+      { url: 'https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=stm', source: 'Science Translational Medicine' },
+      { url: 'https://link.springer.com/search.rss?query=*&content-type=Article&content-type=Research&content-type=Review&sortBy=relevance&search-within=Journal&facet-journal-id=12984', source: 'Journal of Neuroengineering' }
     ];
 
     let allItems = [];
@@ -205,6 +210,7 @@
         // time filtering
         const now = new Date();
         const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const oneDayAgo = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
         const twoDaysAgo = new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000);
         const twoWeeksAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
         const threeWeeksAgo = new Date(now.getTime() - 21 * 24 * 60 * 60 * 1000);
@@ -216,6 +222,12 @@
           const itemDate = new Date(item.pubDate);
 
           switch (feed.source) {
+            case 'Nature Medicine':
+            case 'Nature Biomedical Engineering':
+            case 'Nature Neuroscience':
+            case 'Science Translational Medicine':
+            case 'Journal of Neuroengineering':
+              return itemDate >= oneDayAgo;
             case 'Fierce Biotech':
             case 'The Transmitter':
               return itemDate >= twoDaysAgo;
