@@ -10,6 +10,8 @@
 
     <link href="style/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style/bootstrap-5.3.3-dist/css/style.css" rel="stylesheet">
+    <link href="style/mouse-field.css" rel="stylesheet">
+    <link href="style/site-theme.css" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -25,10 +27,6 @@
     <style>
       html, body {
         min-height: 100%;
-        background-image: url('media/news_bg.webp');
-        background-size: cover;
-        background-position: center -95px;
-        background-repeat: no-repeat;
       }
 
       .custom-blur-background {
@@ -126,6 +124,7 @@
   </head>
 
   <body class="parallax">
+  <canvas id="mouse-field" aria-hidden="true"></canvas>
 
   <div id="navbar-placeholder"></div>
 
@@ -165,6 +164,8 @@
 
 
   <script src="style/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="style/mouse-field.js"></script>
+  <script src="style/page-fragments.js"></script>
   <script>
     const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
@@ -353,19 +354,6 @@
   }
 
     loadAllFeeds();
-  </script>
-
-  <script>
-    fetch('navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
   </script>
 
   </body>
