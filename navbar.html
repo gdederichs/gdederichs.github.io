@@ -49,15 +49,24 @@
 
     <style>
       .navbar-custom {
-        backdrop-filter: blur(75px);
-        background-color: rgba(0, 0, 0, 0.1);
+          position: fixed;
+          z-index: 1050;
+          backdrop-filter: blur(75px);
+          -webkit-backdrop-filter: blur(75px);
+          border-bottom: 1px solid rgba(190, 221, 228, 0.1);
+          background-color: rgba(0, 0, 0, 0.1);
+          transition: opacity 280ms ease;
+      }
+      body:has(#sidebar.show) #mainNavbar {
+          opacity: 0;
+          pointer-events: none;
       }
     </style>
 
     <style>
       .custom-blur-background {
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.0);
+        backdrop-filter: none;
+        background-color: transparent;
       }
     </style>
 
@@ -68,6 +77,14 @@
     </style>
 
     <style>
+      #sidebar {
+          background:
+            radial-gradient(circle at 50% 15%, rgba(93, 163, 184, 0.12), transparent 34rem),
+            linear-gradient(145deg, #090b10 0%, #101821 52%, #080b11 100%) !important;
+      }
+    </style>
+
+    <style>
       .frosted-glass {
         background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(30px);
@@ -75,10 +92,10 @@
         border-right: 1px solid rgba(255, 255, 255, 0.1);
       }
       .bg-frosted {
-        background-color: rgba(255, 255, 255, 0.8) !important;
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        border: 10px solid rgba(255, 255, 255, 0.9);
+          background-color: rgba(22, 31, 41, 0.96) !important;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          border: 1px solid rgba(190, 221, 228, 0.2);
         transform: none !important;
       }
     </style>
@@ -110,8 +127,8 @@
         Contact
       </button>
       <ul class="dropdown-menu dropdown-menu-end bg-frosted w-auto" style="min-width: 0;">
-        <li><a style="color:rgba(0, 0, 0, 0.7);" class="dropdown-item text-center" href="mailto:gregor.dederichs@alumni.epfl.ch" target="_blank">Email</a></li>
-        <li><a style="color:rgba(0, 0, 0, 0.7);" class="dropdown-item text-center" href="https://www.linkedin.com/in/gregordederichs/" target="_blank">LinkedIn</a></li>
+        <li><a style="color: white;" class="dropdown-item text-center" href="mailto:gregor.dederichs@alumni.epfl.ch" target="_blank">Email</a></li>
+        <li><a style="color: white;" class="dropdown-item text-center" href="https://www.linkedin.com/in/gregordederichs/" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
 
